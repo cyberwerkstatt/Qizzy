@@ -14,7 +14,7 @@ let questions = [
     "answer_2":"Antwort 2",
     "answer_3":"Antwort 3",
     "answer_4":"Antwort 4",
-    "answer_":2
+    "right_answer":2
     }
 ]
 
@@ -28,8 +28,16 @@ function init(){
 
 
 function startQuiz(counter){
+    let answers = questions[counter]
     document.getElementById("card-title").innerHTML = questions[counter][`question_`+(counter+1)];
     
+    // for(let i = 1; i <= questions.length; i++){
+    //     document.getElementById("list-group").innerHTML += `
+        
+    //     <a href="#" class="list-group-item list-group-item-action" onclick="checkAnswer(`'answer_'+${i})">A second link item</a>
+        
+    //     `;
+    // }
     
 }
 
