@@ -7,3 +7,29 @@ body {
     align-items: center;
     margin-top: 50px;
 }
+
+.container-fluid {
+    background-color:chartreuse !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.main-pic {
+    display: flex;
+    justify-content: center;
+}
+
+.main-pic img{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    padding-top: 10px;
+}
+
+.answer-button {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin: 10px;
+    border-top: 1px solid black;
+}
