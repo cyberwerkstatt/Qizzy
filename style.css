@@ -12,6 +12,10 @@ h1 {
     margin-top: 50px;
 }
 
+.card {
+    width: 28rem;
+}
+
 .container-fluid {
     background-color:chartreuse !important;
     display: flex !important;
