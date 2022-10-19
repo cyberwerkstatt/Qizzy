@@ -13,7 +13,7 @@ let questions = [
     "answer_1":"Antwort 1",
     "answer_2":"Antwort 2",
     "answer_3":"Antwort 3",
-    "answer_4":"Antwort 4",
+    "answer_4":"Antwort 5",
     "right_answer":2
     }
 ]
@@ -28,13 +28,18 @@ function init(){
 
 
 function startQuiz(counter){
-    let answers = questions[counter]
+    // let answers = questions[counter]
     document.getElementById("card-title").innerHTML = questions[counter][`question_`+(counter+1)];
+
+    for(let i = 1; i <= 4; i++){
+        let idOfAnswers = `answer_${i}`
+        document.getElementById(idOfAnswers).innerHTML = `<a class="card-body" href="#">${questions[counter][idOfAnswers]}</a>`;
+    }
     
-    document.getElementById("answer_1").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_1"]}</a>`;
-    document.getElementById("answer_2").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_2"]}</a>`;
-    document.getElementById("answer_3").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_3"]}</a>`;
-    document.getElementById("answer_4").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_4"]}</a>`;
+    // document.getElementById("answer_1").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_1"]}</a>`;
+    // document.getElementById("answer_2").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_2"]}</a>`;
+    // document.getElementById("answer_3").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_3"]}</a>`;
+    // document.getElementById("answer_4").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_4"]}</a>`;
 }
 
 
@@ -62,5 +67,7 @@ function nextQuestion(){
 function resetButton(){
     for(let i = 1; i <=4; i++){
         document.getElementById(`answer_${i}`).classList.remove("bg-danger")
+        document.getElementById(`answer_${i}`).classList.remove("bg-success")
+        console.log(`answer_${i}`)
     }
 }
