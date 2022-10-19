@@ -38,14 +38,21 @@ function init(){
 
 
 function startQuiz(counter){
-    // let answers = questions[counter]
-    document.getElementById("card-title").innerHTML = questions[counter][`question_`+(counter+1)];
 
-    for(let i = 1; i <= 4; i++){
-        let idOfAnswers = `answer_${i}`
-        document.getElementById(idOfAnswers).innerHTML = `<a class="card-body" href="#">${questions[counter][idOfAnswers]}</a>`;
-    }
+    let idOfQuestion = `question_${counter+1}`
+    document.getElementById("card-title").innerHTML = questions[counter][idOfQuestion];
     
+    if((counter+1) > questions.length){
+        console.log("counter größer")
+    }else {
+        
+        for(let i = 1; i <= 4; i++){
+            let idOfAnswers = `answer_${i}`
+            document.getElementById(idOfAnswers).innerHTML = `<a class="card-body" href="#">${questions[counter][idOfAnswers]}</a>`;
+            console.log(idOfQuestion)
+        }
+    }
+
     // document.getElementById("answer_1").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_1"]}</a>`;
     // document.getElementById("answer_2").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_2"]}</a>`;
     // document.getElementById("answer_3").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_3"]}</a>`;
@@ -72,8 +79,8 @@ function nextQuestion(){
     counter ++
     init();
     document.getElementById(`answer_${questions[counter-1].right_answer}`).classList.remove("bg-success");
-    console.log(counter)
     resetButton();
+    endScreen();
 }
 
 function resetButton(){
@@ -84,6 +91,12 @@ function resetButton(){
     document.getElementById("button").setAttribute("disabled","disabled")
 }
 
-// function endScreen(){
-//     document.getElementById("main-container").
-// }
+function endScreen(){
+
+    if(counter > questions.length){
+        document.getElementById("main-container").stlye = ""
+    }
+    console.log("Counter",counter)
+    console.log("array",questions.length)
+    
+}
