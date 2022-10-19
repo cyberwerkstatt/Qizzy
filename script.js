@@ -5,7 +5,7 @@ let questions = [
     "answer_2":"Antwort 2",
     "answer_3":"Antwort 3",
     "answer_4":"Antwort 4",
-    "answer_":3
+    "right_answer":3
     },
 
     {
@@ -31,12 +31,19 @@ function startQuiz(counter){
     let answers = questions[counter]
     document.getElementById("card-title").innerHTML = questions[counter][`question_`+(counter+1)];
     
-    
+    document.getElementById("answer_1").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_1"]}</a>`;
+    document.getElementById("answer_2").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_2"]}</a>`;
+    document.getElementById("answer_3").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_3"]}</a>`;
+    document.getElementById("answer_4").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_4"]}</a>`;
 }
 
 
 function checkAnswer(selection){
-    console.log(selection)
+    right_answer = questions[counter]["right_answer"]
+    selected_answer = selection.slice(-1)
+   if (selected_answer == right_answer){
+    console.log("richtig")
+   }
 }
 
 function nextQuestion(){
