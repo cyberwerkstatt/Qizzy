@@ -31,17 +31,16 @@ function startQuiz(counter){
     let answers = questions[counter]
     document.getElementById("card-title").innerHTML = questions[counter][`question_`+(counter+1)];
     
-    // for(let i = 1; i <= questions.length; i++){
-    //     document.getElementById("list-group").innerHTML += `
-        
-    //     <a href="#" class="list-group-item list-group-item-action" onclick="checkAnswer(`'answer_'+${i})">A second link item</a>
-        
-    //     `;
-    // }
     
 }
 
 
 function checkAnswer(selection){
     console.log(selection)
+}
+
+function nextQuestion(){
+    counter ++
+    init();
+    console.log(counter)
 }
