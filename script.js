@@ -15,6 +15,15 @@ let questions = [
     "answer_3":"Antwort 3",
     "answer_4":"Antwort 5",
     "right_answer":2
+    },
+
+    {
+    "question_3":"Frage 3",
+    "answer_1":"Antwort 1",
+    "answer_2":"Antwort 2",
+    "answer_3":"Antwort 3",
+    "answer_4":"Antwort 6",
+    "right_answer":1
     }
 ]
 
@@ -24,6 +33,7 @@ let counter = 0;
 
 function init(){
     startQuiz(counter);
+    document.getElementById("button").setAttribute("disabled","disabled")
 }
 
 
@@ -54,6 +64,8 @@ function checkAnswer(selection){
     document.getElementById(selection).classList.add("bg-danger")
     document.getElementById(id_right_answer).classList.add("bg-success")
    }
+
+   document.getElementById("button").removeAttribute("disabled","disabled")
 }
 
 function nextQuestion(){
@@ -68,6 +80,10 @@ function resetButton(){
     for(let i = 1; i <=4; i++){
         document.getElementById(`answer_${i}`).classList.remove("bg-danger")
         document.getElementById(`answer_${i}`).classList.remove("bg-success")
-        console.log(`answer_${i}`)
     }
+    document.getElementById("button").setAttribute("disabled","disabled")
 }
+
+// function endScreen(){
+//     document.getElementById("main-container").
+// }
