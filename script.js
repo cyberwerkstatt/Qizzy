@@ -41,13 +41,26 @@ function startQuiz(counter){
 function checkAnswer(selection){
     right_answer = questions[counter]["right_answer"]
     selected_answer = selection.slice(-1)
+    id_right_answer = `answer_${right_answer}`
    if (selected_answer == right_answer){
+    document.getElementById(selection).classList.add("bg-success")
     console.log("richtig")
+   } else {
+    document.getElementById(selection).classList.add("bg-danger")
+    document.getElementById(id_right_answer).classList.add("bg-success")
    }
 }
 
 function nextQuestion(){
     counter ++
     init();
+    document.getElementById(`answer_${questions[counter-1].right_answer}`).classList.remove("bg-success");
     console.log(counter)
+    resetButton();
+}
+
+function resetButton(){
+    for(let i = 1; i <=4; i++){
+        document.getElementById(`answer_${i}`).classList.remove("bg-danger")
+    }
 }
