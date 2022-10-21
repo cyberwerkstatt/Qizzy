@@ -38,25 +38,15 @@ function init(){
 
 
 function startQuiz(counter){
-
     let idOfQuestion = `question_${counter+1}`
     document.getElementById("card-title").innerHTML = questions[counter][idOfQuestion];
-    
-    if((counter+1) > questions.length){
-        console.log("counter größer")
-    }else {
         
-        for(let i = 1; i <= 4; i++){
-            let idOfAnswers = `answer_${i}`
-            document.getElementById(idOfAnswers).innerHTML = `<a class="card-body" href="#">${questions[counter][idOfAnswers]}</a>`;
-            console.log(idOfQuestion)
-        }
+    for(let i = 1; i <= 4; i++){
+        let idOfAnswers = `answer_${i}`
+        document.getElementById(idOfAnswers).innerHTML = `<a class="card-body" href="#">${questions[counter][idOfAnswers]}</a>`;
+        console.log(idOfQuestion)
     }
-
-    // document.getElementById("answer_1").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_1"]}</a>`;
-    // document.getElementById("answer_2").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_2"]}</a>`;
-    // document.getElementById("answer_3").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_3"]}</a>`;
-    // document.getElementById("answer_4").innerHTML = `<a class="card-body" href="#">${questions[counter]["answer_4"]}</a>`;
+    
 }
 
 
@@ -81,6 +71,7 @@ function nextQuestion(){
     document.getElementById(`answer_${questions[counter-1].right_answer}`).classList.remove("bg-success");
     resetButton();
     endScreen();
+    
 }
 
 function resetButton(){
@@ -93,10 +84,13 @@ function resetButton(){
 
 function endScreen(){
 
-    if(counter > questions.length){
-        document.getElementById("main-container").stlye = ""
+    if(counter >= questions.length){
+        document.getElementById("endScreen").stlye = "";
+        document.getElementById("main-container").style = 'display:none';
     }
+    
     console.log("Counter",counter)
-    console.log("array",questions.length)
+    console.log("Questions-length",questions.length)
     
 }
+
