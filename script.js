@@ -55,9 +55,11 @@ function checkAnswer(selection){
     selected_answer = selection.slice(-1)
     id_right_answer = `answer_${right_answer}`
    if (selected_answer == right_answer){
+    counter++;
     document.getElementById(selection).classList.add("bg-success")
     console.log("richtig")
    } else {
+    counter++;
     document.getElementById(selection).classList.add("bg-danger")
     document.getElementById(id_right_answer).classList.add("bg-success")
    }
@@ -66,11 +68,16 @@ function checkAnswer(selection){
 }
 
 function nextQuestion(){
-    counter ++
-    init();
-    document.getElementById(`answer_${questions[counter-1].right_answer}`).classList.remove("bg-success");
-    resetButton();
-    endScreen();
+    // counter ++
+    
+    if (counter == questions.length){
+        counter = 0;
+        endScreen();
+    } else{
+        init();
+        document.getElementById(`answer_${questions[counter-1].right_answer}`).classList.remove("bg-success");
+        resetButton();
+    }
     
 }
 
@@ -83,14 +90,7 @@ function resetButton(){
 }
 
 function endScreen(){
-
-    if(counter >= questions.length){
-        document.getElementById("endScreen").stlye = "";
-        document.getElementById("main-container").style = 'display:none';
-    }
-    
-    console.log("Counter",counter)
-    console.log("Questions-length",questions.length)
-    
+    document.getElementById("endScreen").stlye = "";
+    document.getElementById("main-container").style = 'display:none';
 }
 
