@@ -112,5 +112,13 @@ function endScreen(){
         <div id="rightQuestions">Richtige: ${trueAnswer}</div>
     </div>
     `;
+
+    confetti();
 }
+
+confetti({
+    particleCount: 1000,
+    spread: 1000,
+    origin: { y: 0.6 }
+  });
 
