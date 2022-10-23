@@ -29,6 +29,9 @@ let questions = [
 
 
 let counter = 0;
+let sumOfQuestions = questions.length;
+let trueAnswer = 0;
+
 
 
 function init(){
@@ -44,7 +47,6 @@ function startQuiz(counter){
     for(let i = 1; i <= 4; i++){
         let idOfAnswers = `answer_${i}`
         document.getElementById(idOfAnswers).innerHTML = `<a class="card-body" href="#">${questions[counter][idOfAnswers]}</a>`;
-        console.log(idOfQuestion)
     }
     
 }
@@ -56,8 +58,8 @@ function checkAnswer(selection){
     id_right_answer = `answer_${right_answer}`
    if (selected_answer == right_answer){
     counter++;
+    trueAnswer++;
     document.getElementById(selection).classList.add("bg-success")
-    console.log("richtig")
    } else {
     counter++;
     document.getElementById(selection).classList.add("bg-danger")
@@ -67,18 +69,22 @@ function checkAnswer(selection){
    document.getElementById("button").removeAttribute("disabled","disabled")
 }
 
-function nextQuestion(){
-    // counter ++
-    
+function nextQuestion(){    
     if (counter == questions.length){
         counter = 0;
         endScreen();
+        checkProgress()
     } else{
         init();
         document.getElementById(`answer_${questions[counter-1].right_answer}`).classList.remove("bg-success");
         resetButton();
+        checkProgress()
     }
-    
+}
+
+function checkProgress(){
+    let progress = Math.round((counter/questions.length)*100)
+    document.getElementById("progress-bar").style.width = progress;
 }
 
 function resetButton(){
@@ -94,8 +100,16 @@ function endScreen(){
     document.getElementById("main-container").style = 'display:none';
     document.getElementById("endScreen-div").innerHTML = `
     
-    <img src="./img/end.jpg">
-    
+    <div class="endScreen-pics">
+        <img class="slide-in-bck-center" id="thumbs" src="./img/thumbs.png">
+        <img id="end" src="./img/end.jpg">
+        <img class="slide-in-bck-center" id="thumbs" src="./img/thumbs.png">
+    </div>
+    <button id="button" type="button" class="btn btn-primary" onclick="">Quiz Neustarten</button>
+    <div id="questionStats" class="questionStats">
+        <div id="totalQuestions">Fragen insgesamt: ${sumOfQuestions}</div>
+        <div id="rightQuestions">Richtige: ${trueAnswer}</div>
+    </div>
     `;
 }
 
