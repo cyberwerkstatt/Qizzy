@@ -54,3 +54,15 @@ h1 {
     color: white;
     transition: background-color 225ms ease-in-out;
 }
+
+.endScreen-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.endScreen-div img {
+    width: 500px;
+    object-fit: cover;
+}

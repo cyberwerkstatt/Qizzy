@@ -90,7 +90,12 @@ function resetButton(){
 }
 
 function endScreen(){
-    document.getElementById("endScreen").stlye = "";
+    document.getElementById("endScreen").style = '';
     document.getElementById("main-container").style = 'display:none';
+    document.getElementById("endScreen-div").innerHTML = `
+    
+    <img src="./img/end.jpg">
+    
+    `;
 }
 
