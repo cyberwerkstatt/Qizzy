@@ -102,19 +102,7 @@ function resetButton(){
 function endScreen(){
     document.getElementById("endScreen").style = '';
     document.getElementById("main-container").style = 'display:none';
-    document.getElementById("endScreen-div").innerHTML = `
-    
-    <div class="endScreen-pics">
-        <img class="slide-in-bck-center" id="thumbs" src="./img/thumbs.png">
-        <img id="end" src="./img/end.jpg">
-        <img class="slide-in-bck-center" id="thumbs" src="./img/thumbs.png">
-    </div>
-    <button id="button" type="button" class="btn btn-primary" onclick="">Quiz Neustarten</button>
-    <div id="questionStats" class="questionStats">
-        <div id="totalQuestions">Fragen insgesamt: ${sumOfQuestions}</div>
-        <div id="rightQuestions">Richtige: ${trueAnswer}</div>
-    </div>
-    `;
+    document.getElementById("endScreen-div").innerHTML = endScreenInnerHTML(sumOfQuestions, trueAnswer);
 
     confetti();
 }
@@ -139,3 +127,35 @@ function enableAnswers(){
     }
 }
 
+function endScreenInnerHTML(sumOfQuestions, trueAnswer){
+    return `
+    
+    <div class="endScreen-pics">
+        <img class="slide-in-bck-center" id="thumbs" src="./img/thumbs.png">
+        <img id="end" src="./img/end.jpg">
+        <img class="slide-in-bck-center" id="thumbs" src="./img/thumbs.png">
+    </div>
+    <button id="button" type="button" class="btn btn-primary" onclick="restartQuiz()">Quiz Neustarten</button>
+    <div id="questionStats" class="questionStats">
+        <div id="totalQuestions">Fragen insgesamt: ${sumOfQuestions}</div>
+        <div id="rightQuestions">Richtige: ${trueAnswer}</div>
+    </div>
+    `
+}
+
+function restartQuiz(){
+    counter = 0;
+    sumOfQuestions = questions.length;
+    trueAnswer = 0;
+    document.getElementById("endScreen").style = 'display:none';
+    document.getElementById("main-container").style = '';
+    document.getElementById("progress-bar").style.width = '0%';
+    document.getElementById("progress-bar").innerHTML = '';
+    document.getElementById("button").setAttribute("disabled","disabled")
+    for(let i = 1; i <=4; i++){
+        document.getElementById(`answer_${i}`).classList.remove("bg-danger")
+        document.getElementById(`answer_${i}`).classList.remove("bg-success")
+    }
+    init();
+    enableAnswers();
+}
