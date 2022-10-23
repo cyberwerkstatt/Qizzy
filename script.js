@@ -84,7 +84,7 @@ function nextQuestion(){
 
 function checkProgress(){
     let progress = Math.round((counter/questions.length)*100)
-    document.getElementById("progress-bar").style.width = progress;
+    document.getElementById("progress-bar").style.width = progress+'%';
 }
 
 function resetButton(){
