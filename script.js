@@ -61,11 +61,13 @@ function checkAnswer(selection){
     trueAnswer++;
     document.getElementById(selection).classList.add("bg-success")
     checkProgress()
+    disableAnswers()
    } else {
     counter++;
     document.getElementById(selection).classList.add("bg-danger")
     document.getElementById(id_right_answer).classList.add("bg-success")
     checkProgress()
+    disableAnswers()
    }
 
    document.getElementById("button").removeAttribute("disabled","disabled")
@@ -79,6 +81,7 @@ function nextQuestion(){
         init();
         document.getElementById(`answer_${questions[counter-1].right_answer}`).classList.remove("bg-success");
         resetButton();
+        enableAnswers()
     }
 }
 
@@ -119,6 +122,20 @@ function endScreen(){
 confetti({
     particleCount: 1000,
     spread: 1000,
-    origin: { y: 0.6 }
+    origin: { y: 3.6 }
   });
+
+function disableAnswers(){
+    for(let i = 1; i <= 4; i++){
+        idOfAnswers = `answer_${i}`;
+        document.getElementById(idOfAnswers).setAttribute("disabled","enabled");
+    }
+}
+
+function enableAnswers(){
+    for(let i = 1; i <= 4; i++){
+        idOfAnswers = `answer_${i}`;
+        document.getElementById(idOfAnswers).removeAttribute("disabled","disabled");
+    }
+}
 
