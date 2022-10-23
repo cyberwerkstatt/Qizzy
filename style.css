@@ -5,11 +5,25 @@ body {
 h1 {
     font-size: 30px !important;
 }
+
+a {
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: none !important;
+}
 .main-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
+}
+.nextQuestion-div{
+    display: flex;
+    justify-content: center;
+    height: 103px;
+    align-items: center;
 }
 
 .card {
@@ -21,6 +35,10 @@ h1 {
     background-color:chartreuse !important;
     display: flex !important;
     justify-content: center !important;
+}
+
+.navbar {
+    background-color: chartreuse !important;
 }
 
 .main-pic {
@@ -50,8 +68,7 @@ h1 {
 
 
 .list-group a:hover {
-    background-color:#0B5ED7;
-    color: white;
+    
     transition: background-color 225ms ease-in-out;
 }
 .endScreen {

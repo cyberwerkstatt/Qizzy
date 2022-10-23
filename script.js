@@ -32,6 +32,10 @@ let counter = 0;
 let sumOfQuestions = questions.length;
 let trueAnswer = 0;
 
+let audioSucess = new Audio("./sounds/success.mp3")
+let audioFail = new Audio("./sounds/fail.mp3")
+let aplaus = new Audio("./sounds/applaus.mp3")
+
 
 
 function init(){
@@ -62,12 +66,14 @@ function checkAnswer(selection){
     document.getElementById(selection).classList.add("bg-success")
     checkProgress()
     disableAnswers()
+    audioSucess.play();
    } else {
     counter++;
     document.getElementById(selection).classList.add("bg-danger")
     document.getElementById(id_right_answer).classList.add("bg-success")
     checkProgress()
     disableAnswers()
+    audioFail.play();
    }
 
    document.getElementById("button").removeAttribute("disabled","disabled")
@@ -103,7 +109,7 @@ function endScreen(){
     document.getElementById("endScreen").style = '';
     document.getElementById("main-container").style = 'display:none';
     document.getElementById("endScreen-div").innerHTML = endScreenInnerHTML(sumOfQuestions, trueAnswer);
-
+    aplaus.play();
     confetti();
 }
 
@@ -151,11 +157,11 @@ function restartQuiz(){
     document.getElementById("main-container").style = '';
     document.getElementById("progress-bar").style.width = '0%';
     document.getElementById("progress-bar").innerHTML = '';
-    document.getElementById("button").setAttribute("disabled","disabled")
     for(let i = 1; i <=4; i++){
         document.getElementById(`answer_${i}`).classList.remove("bg-danger")
         document.getElementById(`answer_${i}`).classList.remove("bg-success")
     }
     init();
     enableAnswers();
+    document.getElementById("button").setAttribute("disabled","enabled")
 }
