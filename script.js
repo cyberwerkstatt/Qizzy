@@ -60,10 +60,12 @@ function checkAnswer(selection){
     counter++;
     trueAnswer++;
     document.getElementById(selection).classList.add("bg-success")
+    checkProgress()
    } else {
     counter++;
     document.getElementById(selection).classList.add("bg-danger")
     document.getElementById(id_right_answer).classList.add("bg-success")
+    checkProgress()
    }
 
    document.getElementById("button").removeAttribute("disabled","disabled")
@@ -73,18 +75,17 @@ function nextQuestion(){
     if (counter == questions.length){
         counter = 0;
         endScreen();
-        checkProgress()
     } else{
         init();
         document.getElementById(`answer_${questions[counter-1].right_answer}`).classList.remove("bg-success");
         resetButton();
-        checkProgress()
     }
 }
 
 function checkProgress(){
     let progress = Math.round((counter/questions.length)*100)
     document.getElementById("progress-bar").style.width = progress+'%';
+    document.getElementById("progress-bar").innerHTML = progress+'%';
 }
 
 function resetButton(){

@@ -86,6 +86,10 @@ h1 {
     align-items: center;
 }
 
+.progress {
+    margin-bottom: 10px;
+}
+
 .endScreen-pics img {
     width: 500px;
     object-fit: cover;
