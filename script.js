@@ -128,9 +128,7 @@ function endScreenInnerHTML(sumOfQuestions, trueAnswer){
     return `
     
     <div class="endScreen-pics">
-        <img class="slide-in-bck-center" id="thumbs" src="./img/thumbs.png">
         <img id="end" src="./img/end.jpg">
-        <img class="slide-in-bck-center" id="thumbs" src="./img/thumbs.png">
     </div>
     <button id="button" type="button" class="btn btn-primary" onclick="restartQuiz()">Quiz Neustarten</button>
     <div id="questionStats" class="questionStats">
